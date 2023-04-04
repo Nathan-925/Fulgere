@@ -13,18 +13,22 @@
 namespace ful{
 
 	class ColorMap{
-		const int pixelBits;
+	public:
+		const int bits;
 		priori::Color*** colors;
 
-		ColorMap(int b = 24);
-		ColorMap(const priori::Image &image, int b = 24);
+		ColorMap(int b = 8);
+		ColorMap(const priori::Image &image, int b = 8);
 		~ColorMap();
 
+		priori::Color& get(const priori::Color &color);
 		priori::Color get(const priori::Color &color) const;
 		void recolor(priori::Image &image) const;
 	};
 
-	priori::Image appendColorMap(const priori::Image &image, int pixelBits = 24);
+	priori::Image getColorMap(int bits = 8);
+
+	priori::Image appendColorMap(const priori::Image &image, int bits = 8);
 
 }
 
